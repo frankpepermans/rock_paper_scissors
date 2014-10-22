@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<fx:Skin xmlns:fx="library://dart_flex">
+  <fx:declarations>
+    <fx:bool id="isTitleShown">true</fx:bool>
+  </fx:declarations>
+  
+  <fx:VGroup
+    paddingTop="30"
+    percentWidth="100.0"
+    percentHeight="100.0"
+    includeInLayout="{isTitleShown}"
+    visible="{isTitleShown}">
+    
+    <fx:Button 
+      cssClasses="['slide-from-top-A']"
+      y = "-200"
+      width="160" height="40"
+      label="'Player vs Player'"
+      on-button-click="(_) => isTitleShown = false" />
+      
+    <fx:Button 
+      cssClasses="['slide-from-top-B']"
+      y = "-200"
+      width="160" height="40"
+      label="'Player vs Computer'"
+      on-button-click="(_) => isTitleShown = false" />
+      
+    <fx:Button 
+      cssClasses="['slide-from-top-C']"
+      y = "-200"
+      width="160" height="40"
+      label="'Computer vs Computer'"
+      on-button-click="(_) => isTitleShown = false" />
+      
+  </fx:VGroup>
+  
+</fx:Skin>

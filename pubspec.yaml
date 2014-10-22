@@ -1,0 +1,9 @@
+name: rock_paper_scissors
+description: A sample web application
+dependencies:
+  browser: any
+  dart_flex: any
+  observe: any
+transformers:
+- dart_flex/src/transformers/uiml_transformer
+- observe/transformer
