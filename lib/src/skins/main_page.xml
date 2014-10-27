@@ -79,63 +79,13 @@
       
   </fx:VGroup>
   
-  <fx:HGroup
+  <fx:GameWindow
     id="gameWindow"
     includeIn="[gameScreen]"
     percentWidth="100.0"
-    percentHeight="100.0">
+    percentHeight="100.0"
+    rulesLoader="{rulesLoader}">
     
-    <fx:VGroup
-      cssClasses="['player-one']"
-      width="110"
-      percentHeight="100.0">
-      
-      <fx:Image
-        cssClasses="['slide-from-top-C']"
-        y = "-200"
-        width="51" height="72"
-        source="'assets/player_type_01_left.png'" />
-        
-      <fx:ListRenderer
-        cssClasses="['slide-from-top-B', 'rounded-images']"
-        y = "-200"
-        width="60"
-        percentHeight="100.0"
-        rowHeight="60"
-        rowSpacing="0"
-        itemRendererFactory="new ItemRendererFactory(constructorMethod: ImageItemRenderer.construct)"
-        dataProvider="{rulesLoader.choices}"
-        on-selected-item-changed="(FrameworkEvent<String> event) => selectedGameType = event.relatedObject" />
-        
-    </fx:VGroup>
-      
-    <fx:Spacer
-      percentWidth="100.0" />
-      
-    <fx:VGroup
-      cssClasses="['player-two']"
-      width="110"
-      percentHeight="100.0">
-      
-      <fx:Image
-        cssClasses="['slide-from-top-C']"
-        y = "-200"
-        width="51" height="72"
-        source="'assets/player_type_01_right.png'" />
-        
-      <fx:ListRenderer
-        cssClasses="['slide-from-top-B', 'rounded-images']"
-        y = "-200"
-        width="60"
-        percentHeight="100.0"
-        rowHeight="60"
-        rowSpacing="0"
-        itemRendererFactory="new ItemRendererFactory(constructorMethod: ImageItemRenderer.construct)"
-        dataProvider="{rulesLoader.choices}"
-        on-selected-item-changed="(FrameworkEvent<String> event) => selectedGameType = event.relatedObject" />
-        
-    </fx:VGroup>
-    
-  </fx:HGroup>
+  </fx:GameWindow>
   
 </fx:Skin>

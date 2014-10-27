@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<fx:Skin xmlns:fx="library://dart_flex">
+  
+  <fx:declarations>
+  </fx:declarations>
+  
+  <fx:states>
+  </fx:states>
+  
+  <fx:HGroup
+    percentWidth="100.0"
+    percentHeight="100.0">
+    
+    <fx:VGroup
+      cssClasses="['player-one']"
+      width="110"
+      percentHeight="100.0">
+      
+      <fx:Image
+        cssClasses="['slide-from-top-C']"
+        y = "-200"
+        width="51" height="72"
+        source="'assets/player_type_01_left.png'" />
+        
+      <fx:ListRenderer
+        cssClasses="['slide-from-top-B', 'rounded-images']"
+        y = "-200"
+        width="60"
+        percentHeight="100.0"
+        rowHeight="60"
+        rowSpacing="0"
+        itemRendererFactory="new ItemRendererFactory(constructorMethod: ImageItemRenderer.construct)"
+        dataProvider="{rulesLoader.ruleset.assets}"
+        labelFunction="(Map<String, String> M) => M['asset']"
+        on-selected-item-changed="(FrameworkEvent<String> event) => selectedGameType = event.relatedObject" />
+        
+    </fx:VGroup>
+      
+    <fx:Spacer
+      percentWidth="100.0" />
+      
+    <fx:VGroup
+      cssClasses="['player-two']"
+      width="110"
+      percentHeight="100.0">
+      
+      <fx:Image
+        cssClasses="['slide-from-top-C']"
+        y = "-200"
+        width="51" height="72"
+        source="'assets/player_type_01_right.png'" />
+        
+      <fx:ListRenderer
+        cssClasses="['slide-from-top-B', 'rounded-images']"
+        y = "-200"
+        width="60"
+        percentHeight="100.0"
+        rowHeight="60"
+        rowSpacing="0"
+        itemRendererFactory="new ItemRendererFactory(constructorMethod: ImageItemRenderer.construct)"
+        dataProvider="{rulesLoader.ruleset.assets}"
+        labelFunction="(Map<String, String> M) => M['asset']"
+        on-selected-item-changed="(FrameworkEvent<String> event) => selectedGameType = event.relatedObject" />
+        
+    </fx:VGroup>
+    
+  </fx:HGroup>
+  
+</fx:Skin>

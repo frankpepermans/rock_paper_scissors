@@ -1,12 +1,12 @@
 part of rps;
 
-class Controller extends SkinnableComponent {
+class MainApplication extends SkinnableComponent {
   
-  Group titleWindow, setupWindow, gameWindow;
-  String selectedGameType;
+  Group titleWindow, setupWindow;
+  GameWindow gameWindow;
   
   @Skin('rock_paper_scissors|lib/src/skins/main_page.xml')
-  Controller() : super();
+  MainApplication() : super();
   
   @override
   void partAdded(IUIWrapper part) {
@@ -16,9 +16,7 @@ class Controller extends SkinnableComponent {
   }
   
   void setGameType(String gameType, GameRulesLoader loader) {
-    selectedGameType = gameType;
-    
-    loader.choices = loader.gameChoices[gameType];
+    loader.setupGameType(gameType);
   }
   
   void switchToScreen(String screenName) {
