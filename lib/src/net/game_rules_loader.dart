@@ -7,6 +7,7 @@ class GameRulesLoader extends Object with FrameworkEventDispatcherMixin implemen
   ObservableList<String> gameTypes = new ObservableList<String>();
   
   @observable GameRuleSet ruleset;
+  @observable String playerMode;
   
   List<Map<String, dynamic>> _raw;
   
@@ -41,6 +42,10 @@ class GameRulesLoader extends Object with FrameworkEventDispatcherMixin implemen
     if (R == null) throw new ArgumentError('requested game type $T does not exist!');
     
     ruleset = new GameRuleSet(R);
+  }
+  
+  void setupPlayers(String P) {
+    playerMode = P;
   }
 }
 
