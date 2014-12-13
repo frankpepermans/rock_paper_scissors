@@ -1,13 +1,17 @@
 part of rps;
 
+enum GameMode {
+  player_vs_cpu,
+  player_vs_player,
+  cpu_vs_cpu
+}
+
 class GameRulesLoader extends Object with FrameworkEventDispatcherMixin implements IFrameworkEventDispatcher {
-  
-  final ObservableList<String> gameModeAssets = new ObservableList<String>.from(const <String>['assets/player_vs_cpu.png', 'assets/player_vs_player.png', 'assets/cpu_vs_cpu.png']);
-  
+  final ObservableList<GameMode> gameModeAssets = new ObservableList<GameMode>.from(GameMode.values);
   ObservableList<String> gameTypes = new ObservableList<String>();
   
   @observable GameRuleSet ruleset;
-  @observable String playerMode;
+  @observable GameMode playerMode;
   
   List<Map<String, dynamic>> _raw;
   
@@ -44,9 +48,20 @@ class GameRulesLoader extends Object with FrameworkEventDispatcherMixin implemen
     ruleset = new GameRuleSet(R);
   }
   
-  void setupPlayers(String P) {
+  void setupPlayers(GameMode P) {
     playerMode = P;
   }
+}
+
+class MatchUpResult {
+  
+  final String winner, loser, relation;
+  final int result;
+  
+  const MatchUpResult(this.winner, this.loser, this.result, this.relation);
+  
+  factory MatchUpResult.TIE() => const MatchUpResult(null, null, 0, 'tie');
+  
 }
 
 class GameRuleSet extends Observable {
@@ -66,4 +81,28 @@ class GameRuleSet extends Observable {
     relations = new ObservableList<List<String>>.from(rawData['relations']);
   }
   
+  MatchUpResult matchUp(String left, String right) {
+    if (left == right) return new MatchUpResult.TIE();
+    
+    final int assetsLen = assets.length;
+    int li = -1, ri = -1;
+    
+    for (int i=0; i<assetsLen; i++) {
+      if (assets[i]['name'] == left)  li = i;
+      if (assets[i]['name'] == right) ri = i;
+      
+      if (li != -1 && ri != -1) break;
+    }
+    
+    if (li == -1 && ri >= 0) return new MatchUpResult(right, left, -1, 'left side failed to choose in time!');
+    if (ri == -1 && li >= 0) return new MatchUpResult(left, right, 1, 'right side failed to choose in time!');
+    
+    final int res = matrix[li][ri];
+    
+    if (res == 0) return new MatchUpResult.TIE();
+    else if (res == 1) return new MatchUpResult(left, right, res, relations[li][ri]);
+    else if (res == -1) return new MatchUpResult(right, left, res, relations[ri][li]);
+    
+    return null;
+  }
 }

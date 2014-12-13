@@ -26,6 +26,7 @@
         source="'assets/player_type_01_left.png'" />
         
       <fx:ListRenderer
+        id="playerOneSelectionGroup"
         includeIn="[selectionScreen, resultsScreen]"
         cssClasses="['slide-from-top-B', 'rounded-images']"
         y = "-200"
@@ -35,12 +36,21 @@
         rowSpacing="0"
         itemRendererFactory="new ItemRendererFactory(constructorMethod: ImageItemRenderer.construct)"
         dataProvider="{rulesLoader.ruleset.assets}"
-        labelFunction="(Map<String, String> M) => M['asset']"
+        labelFunction="(Map M) => M['asset']"
         on-selected-item-changed="(FrameworkEvent<String> event) => selectedGameType = event.relatedObject" />
+        
+     <fx:RichText
+        cssClasses="['slide-from-top-A', 'score']"
+        includeIn="[selectionScreen, resultsScreen]"
+        width="30"
+        height="30"
+        align="'center'"
+        text="{playerOneScore.toString()}" />
         
     </fx:VGroup>
     
     <VGroup
+      includeIn="[timerScreen]"
       percentWidth="100.0"
       percentHeight="100.0">
       
@@ -48,7 +58,6 @@
         percentHeight="100.0" />
       
       <fx:RichText
-        includeIn="[timerScreen]"
         id="countdownLabel"
         width="400"
         height="40"
@@ -57,6 +66,61 @@
         
       <fx:Spacer
         percentHeight="100.0" />
+      
+    </VGroup>
+    
+    <VGroup
+      includeIn="[selectionScreen]"
+      percentWidth="100.0"
+      percentHeight="100.0">
+      
+      <fx:Spacer
+        percentHeight="100.0" />
+        
+      <fx:RichText
+        width="400"
+        height="40"
+        align="'center'"
+        text="'Make your selection before the timer runs out!'" />
+      
+      <fx:Group
+        cssClasses="['selection-timer']"
+        id="selectionTimer"
+        width="400"
+        height="40" />
+        
+      <fx:Spacer
+        percentHeight="100.0" />
+        
+      <fx:Image
+        width="400"
+        height="231"
+        source="{rulesLoader.ruleset.theme}" />
+      
+    </VGroup>
+    
+    <VGroup
+      includeIn="[resultsScreen]"
+      percentWidth="100.0"
+      percentHeight="100.0">
+      
+      <fx:Spacer
+        percentHeight="100.0" />
+      
+      <fx:RichText
+        id="resultLabel"
+        width="400"
+        height="40"
+        align="'center'"
+        richText="{resultText}" />
+        
+      <fx:Spacer
+        percentHeight="100.0" />
+        
+      <fx:Image
+        width="400"
+        height="231"
+        source="{rulesLoader.ruleset.theme}" />
       
     </VGroup>
       
@@ -72,6 +136,7 @@
         source="'assets/player_type_01_right.png'" />
         
       <fx:ListRenderer
+        id="playerTwoSelectionGroup"
         includeIn="[selectionScreen, resultsScreen]"
         cssClasses="['slide-from-top-B', 'rounded-images']"
         y = "-200"
@@ -81,8 +146,16 @@
         rowSpacing="0"
         itemRendererFactory="new ItemRendererFactory(constructorMethod: ImageItemRenderer.construct)"
         dataProvider="{rulesLoader.ruleset.assets}"
-        labelFunction="(Map<String, String> M) => M['asset']"
+        labelFunction="(Map M) => M['asset']"
         on-selected-item-changed="(FrameworkEvent<String> event) => selectedGameType = event.relatedObject" />
+        
+      <fx:RichText
+        cssClasses="['slide-from-top-A', 'score']"
+        includeIn="[selectionScreen, resultsScreen]"
+        width="30"
+        height="30"
+        align="'center'"
+        text="{playerTwoScore.toString()}" />
         
     </fx:VGroup>
     

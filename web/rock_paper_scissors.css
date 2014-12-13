@@ -63,6 +63,20 @@ body {
           transition: top .25s ease-out;
 }
 
+.selection-timer {
+  background: url("assets/slider_bg.jpg") repeat-y;
+  border: 2px solid #333;
+  box-sizing:border-box;
+     -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  border-radius: 4px;
+}
+
+.score {
+  font-size: 1.5em;
+  color: #fff;
+}
+
 .player-one {
   background-color: #f90;
 }

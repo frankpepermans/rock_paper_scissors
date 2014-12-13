@@ -12,5 +12,6 @@ transformers:
     commandLineOptions:
     - --trust-type-annotations
     - --suppress-warnings
+    - --enable-enum
     minify: true
     checked: false

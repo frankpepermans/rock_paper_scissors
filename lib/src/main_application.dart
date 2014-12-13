@@ -19,14 +19,14 @@ class MainApplication extends SkinnableComponent {
     loader.setupGameType(gameType);
   }
   
-  void setPlayers(String playerMode, GameRulesLoader loader) {
+  void setPlayers(GameMode playerMode, GameRulesLoader loader) {
     loader.setupPlayers(playerMode);
   }
   
   void startGame() {
     switchToScreen('gameScreen');
     
-    gameWindow.reset();
+    gameWindow.beginCountdown();
   }
   
   void switchToScreen(String screenName) {

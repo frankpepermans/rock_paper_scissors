@@ -66,6 +66,7 @@
       colSpacing="0"
       itemRendererFactory="new ItemRendererFactory(constructorMethod: ImageItemRenderer.construct)"
       dataProvider="{rulesLoader.gameModeAssets}"
+      labelFunction="(GameMode M) => 'assets/' + M.toString().replaceAll('.', '-') + '.png'"
       on-selected-item-changed="(FrameworkEvent<String> event) => setPlayers(event.relatedObject, rulesLoader)" />
       
     <fx:Button
